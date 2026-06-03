@@ -1,97 +1,46 @@
-import Image from "next/image";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import HeroSection from "@/components/hero-section";
+import Navbar from "@/components/navbar";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#FAF7F2] text-[#4A3F35]">
-      <section className="max-w-7xl mx-auto px-8 py-20">
-        <div className="grid lg:grid-cols-2 gap-16 items-center min-h-[80vh]">
-          
-          {/* Left Side */}
-          <div>
-            <p className="text-[#D4A373] font-medium mb-4">
-              Hello, I'm
-            </p>
+    <main className="relative min-h-screen overflow-hidden text-[#4A3F35]">
+      <div className="pointer-events-none fixed inset-0 z-0">
+        <div className="blob blob-1" />
+        <div className="blob blob-2" />
+        <div className="blob blob-3" />
+      </div>
 
-            <h1 className="text-6xl md:text-7xl font-bold leading-tight">
-              Acharawan Muenpilomthong
-            </h1>
+      <div className="relative z-10 flex min-h-screen flex-col">
+        <Navbar />
 
-            <h2 className="text-2xl md:text-3xl mt-6 font-medium leading-relaxed">
-              Software Developer
-              <br />
-              & Forensic Science Student
-            </h2>
-
-            <p className="mt-8 text-lg text-[#6B7280] max-w-xl leading-8">
-              Passionate about building modern web applications,
-              integrating AI-powered solutions, and exploring
-              digital forensic technologies.
-            </p>
-
-            <div className="flex flex-wrap gap-4 mt-10">
-              <a
-                href="#projects"
-                className="px-6 py-3 rounded-full bg-[#D4A373] text-white font-medium hover:opacity-90 transition"
-              >
-                View Projects
-              </a>
-
-              <a
-                href="https://www.linkedin.com/in/achmue"
-                target="_blank"
-                className="px-6 py-3 rounded-full border border-[#D4A373] hover:bg-[#FFF8E7] transition"
-              >
-                LinkedIn
-              </a>
-
-              <a
-                href="https://www.github.com/baebiebuboo"
-                target="_blank"
-                className="px-6 py-3 rounded-full border border-[#D4A373] hover:bg-[#FFF8E7] transition"
-              >
-                GitHub
-              </a>
-            </div>
-
-            <div className="flex gap-3 mt-10 flex-wrap">
-              <span className="px-4 py-2 rounded-full bg-white shadow-sm">
-                Next.js
-              </span>
-
-              <span className="px-4 py-2 rounded-full bg-white shadow-sm">
-                TypeScript
-              </span>
-
-              <span className="px-4 py-2 rounded-full bg-white shadow-sm">
-                AI
-              </span>
-
-              <span className="px-4 py-2 rounded-full bg-white shadow-sm">
-                Digital Forensics
-              </span>
-            </div>
-          </div>
-
-          {/* Right Side */}
-          <div className="flex justify-center">
-            <div className="relative">
-              
-              <div className="absolute inset-0 bg-[#F4C2C2] rounded-full blur-3xl opacity-50 scale-110" />
-
-              <div className="relative w-[320px] h-[320px] rounded-full overflow-hidden border-8 border-white shadow-xl">
-                <Image
-                  src="/profile.jpg"
-                  alt="Bonus"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-
-            </div>
-          </div>
-
+        <div className="flex flex-1 items-center">
+          <HeroSection />
         </div>
-      </section>
+
+        <footer className="mx-auto mb-6 mt-6 w-full max-w-7xl px-6 text-[#5A3628]">
+          <div className="flex items-center justify-between rounded-2xl bg-[#FFF3D4] px-6 py-4 shadow-sm">
+            <div className="flex gap-5">
+              <a href="https://github.com/baebiebuboo" target="_blank">
+                <FaGithub size={22} />
+              </a>
+
+              <a href="https://www.linkedin.com/in/achmue" target="_blank">
+                <FaLinkedin size={22} />
+              </a>
+
+              <a href="mailto:bonusacharawan@gmail.com">
+                <MdEmail size={24} />
+              </a>
+            </div>
+
+            <p className="text-sm font-medium">
+              © 2026 Acharawan Muenpilomthong
+            </p>
+          </div>
+        </footer>
+      </div>
     </main>
   );
 }
