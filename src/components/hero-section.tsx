@@ -3,7 +3,7 @@ import PhotoStack from "./photo-stack";
 const interests = [
   "Full-Stack Development",
   "AI Applications",
-  "Digital Forensics",
+  "Forensics Science",
   "GIS & Data",
   "Machine Learning",
   "Business Strategy",
@@ -27,7 +27,7 @@ export default function HeroSection() {
           <h2 className="mt-8 text-2xl leading-snug text-[#4A3329]">
             Digital Engineering Graduate
             <br />
-            Exploring Software Development, AI,
+            Exploring Software Development, AI, ML
             <br />
             and Digital Forensics
           </h2>
