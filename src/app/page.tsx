@@ -1,66 +1,76 @@
-import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { MdEmail } from "react-icons/md";
+import Link from "next/link";
+import { PiArrowRight } from "react-icons/pi";
 
-import HeroSection from "@/components/hero-section";
-import Navbar from "@/components/navbar";
+import Hero from "@/components/home/hero";
+import ProjectRow from "@/components/projects/project-row";
+import Button from "@/components/ui/button";
+import Container from "@/components/ui/container";
+import Reveal from "@/components/reveal";
+import SectionLabel from "@/components/ui/section-label";
+import { projects } from "@/data/projects";
 
 export default function Home() {
+  const featured = projects.filter((p) => p.featured).slice(0, 4);
+
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#FAF7F2] text-[#4A3F35]">
-      {/* Background */}
-      <div className="pointer-events-none fixed inset-0 z-0">
-        <div className="blob blob-1" />
-        <div className="blob blob-2" />
-        <div className="blob blob-3" />
-      </div>
+    <>
+      <Hero />
 
-      <div className="relative z-10 flex min-h-screen flex-col">
-        <Navbar />
-
-        {/* Hero */}
-        <section className="flex flex-1 items-center">
-          <HeroSection />
-        </section>
-
-        {/* Footer */}
-        <footer className="mx-auto mb-6 mt-6 w-full max-w-7xl px-6">
-          <div className="flex items-center justify-between rounded-[26px] border border-[#F1E4D6] bg-[#FFF3D4]/90 px-6 py-4 shadow-[0_10px_30px_rgba(0,0,0,.05)] backdrop-blur-sm">
-            <div className="flex items-center gap-5 text-[#6B3F2D]">
-              <a
-                href="https://github.com/baebiebuboo"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub"
-                className="transition duration-200 hover:-translate-y-0.5 hover:text-[#8B5E4B]"
+      {/* Selected work */}
+      {featured.length > 0 && (
+        <Container className="mt-20 sm:mt-28">
+          <Reveal>
+            <div className="flex flex-wrap items-end justify-between gap-6">
+              <div>
+                <SectionLabel index="01">Selected work</SectionLabel>
+                <h2 className="mt-5 font-display text-4xl tracking-tight sm:text-5xl">
+                  Recent <em className="text-cocoa">projects</em>
+                </h2>
+              </div>
+              <Link
+                href="/projects"
+                className="group inline-flex items-center gap-2 text-sm tracking-wide text-ink underline decoration-line underline-offset-4 hover:decoration-cocoa"
               >
-                <FaGithub size={22} />
-              </a>
-
-              <a
-                href="https://www.linkedin.com/in/achmue"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-                className="transition duration-200 hover:-translate-y-0.5 hover:text-[#8B5E4B]"
-              >
-                <FaLinkedin size={22} />
-              </a>
-
-              <a
-                href="mailto:bonusacharawan@gmail.com"
-                aria-label="Email"
-                className="transition duration-200 hover:-translate-y-0.5 hover:text-[#8B5E4B]"
-              >
-                <MdEmail size={24} />
-              </a>
+                All projects
+                <PiArrowRight className="transition-transform group-hover:translate-x-1" />
+              </Link>
             </div>
+          </Reveal>
 
-            <p className="text-sm font-medium text-[#6B3F2D]">
-              © 2026 Acharawan Muenpilomthong
-            </p>
+          <Reveal delay={0.1}>
+            <ul className="mt-12">
+              {featured.map((project, i) => (
+                <ProjectRow key={project.slug} project={project} index={i} />
+              ))}
+            </ul>
+          </Reveal>
+        </Container>
+      )}
+
+      {/* Contact CTA */}
+      <Container className="mt-28 sm:mt-36">
+        <Reveal>
+          <div className="relative overflow-hidden rounded-[2rem] bg-blush-soft px-6 py-16 text-center sm:px-12 sm:py-20">
+            <div aria-hidden className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-butter/80 blur-3xl" />
+            <div className="relative">
+              <SectionLabel>
+                <span className="mx-auto">Get in touch</span>
+              </SectionLabel>
+              <h2 className="mx-auto mt-5 max-w-2xl font-display text-4xl leading-[1.05] tracking-tight sm:text-6xl">
+                Have something <em className="text-cocoa">in mind?</em>
+              </h2>
+              <p className="mx-auto mt-5 max-w-md text-muted">
+                A role, a project, or just a chat — I&apos;d love to hear from you.
+              </p>
+              <div className="mt-9 flex justify-center">
+                <Button href="/contact" arrow>
+                  Let&apos;s talk
+                </Button>
+              </div>
+            </div>
           </div>
-        </footer>
-      </div>
-    </main>
+        </Reveal>
+      </Container>
+    </>
   );
 }
